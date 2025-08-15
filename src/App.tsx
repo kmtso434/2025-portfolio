@@ -17,6 +17,7 @@ const App: Component = () => {
             height: "100%",
             "min-width": "50rem",
             "max-width": "77rem",
+            "mask-image": `linear-gradient(0deg, #00000000 1% , black )`,
           }}
           src="/images/astrounet_watch_left.png"
           alt="background"
