@@ -40,15 +40,10 @@ export default function RotateText(props: Props) {
       <For each={props.texts}>
         {(text, i) => (
           <div
+            class={prevIndex() === i() ? "animated-text" : ""}
             style={{
-              opacity: index() === i() ? 1 : 0,
-              transform:
-                index() === i()
-                  ? "translateY(0)"
-                  : prevIndex() === i()
-                    ? "translateY(-100%)"
-                    : "translateY(100%)",
-              transition: "opacity 0.6s ease, transform 0.6s ease",
+              opacity: i() === index() ? "1" : "0",
+              transition: "opacity ease-in-out 1s",
               width: "100%",
               height: "100%",
               display: "flex",
@@ -66,5 +61,57 @@ export default function RotateText(props: Props) {
         )}
       </For>
     </div>
+  );
+}
+
+export function RotateText2(props: Props) {
+  const [index, setIndex] = createSignal(0);
+  const [prevIndex, setPrevIndex] = createSignal<number | null>(null);
+
+  createEffect(
+    on(
+      () => index(),
+      () => {
+        const timeout = props.interval ?? 2500;
+        const id = setTimeout(() => {
+          setPrevIndex(index());
+          const newIndex = index() + 1 < props.texts.length ? index() + 1 : 0;
+          setIndex(newIndex);
+        }, timeout);
+      },
+    ),
+  );
+
+  return (
+    <>
+      <For each={props.texts}>
+        {(text, i) => {
+          return (
+            <Show when={i() === index() || i() === prevIndex()}>
+              <div
+                style={{
+                  position: "absolute",
+                  left: "5%",
+
+                  transform: `translateY(-45vh)`,
+                }}
+              >
+                <div
+                  class={`animate__animated  ${i() === index() ? "animate__fadeIn" : " animate__fadeOut"}`}
+                >
+                  <span
+                    style={
+                      props.fontStyle ? props.fontStyle : { color: "#ffffff" }
+                    }
+                  >
+                    {text}
+                  </span>
+                </div>
+              </div>
+            </Show>
+          );
+        }}
+      </For>
+    </>
   );
 }

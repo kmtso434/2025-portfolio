@@ -1,0 +1,63 @@
+/* 컨테이너 기본 스타일 */
+.rotating-text-container {
+  position: relative;
+  width: 100%;
+  height: 8rem; /* 기본 PC 높이 */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px; /* 3D 효과 */
+}
+
+/* 각 텍스트 기본 위치 */
+.rotating-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+/* 큐브 회전 애니메이션 */
+@keyframes rotateIn {
+  from {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateOut {
+  from {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+}
+
+.rotate-in {
+  animation: rotateIn 0.8s ease forwards;
+}
+
+.rotate-out {
+  animation: rotateOut 0.8s ease forwards;
+}
+
+/* --- 모바일 대응 --- */
+@media (max-width: 768px) {
+  .rotating-text-container {
+    height: 4rem; /* 높이 절반 */
+  }
+
+  .rotating-text {
+    font-size: 1.5rem; /* 글자 크기 축소 */
+  }
+}
