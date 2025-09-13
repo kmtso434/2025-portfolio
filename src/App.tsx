@@ -1,5 +1,5 @@
 import { type Component } from "solid-js";
-import { RotateText2 } from "./components/RotateText";
+import { FirstSection } from "./pages/FirstSection";
 
 const App: Component = () => {
   return (
@@ -13,15 +13,13 @@ const App: Component = () => {
         position: "fixed",
       }}
     >
-      {/* First Section */}
       <div
-        id="Introduce"
+        id="Background"
         style={{
           position: "relative",
           width: "100%",
           height: "100%",
           "overflow-x": "hidden",
-          "overflow-y": "auto",
           "background-color": "hsla(33,0%,0%,1)",
           "background-image": `
             radial-gradient(at 2% 3%, hsla(39,88%,47%,1) 0px, transparent 50%),
@@ -31,55 +29,10 @@ const App: Component = () => {
           "scrollbar-width": "none",
         }}
       >
-        <img
-          style={{
-            width: "100%",
-            height: "110%",
-            "object-fit": "cover",
-            "mask-image": `linear-gradient(0deg, #00000000 1%, black)`,
-          }}
-          src="/images/astrounet_watch_left.png"
-          alt="background"
-        />
-
-        <div
-          style={{
-            "font-family": "NimbusSanL-Bol",
-            "font-weight": "bold",
-            position: "absolute",
-            color: "#ffffffff",
-            top: "55%",
-            left: "3%",
-            "font-size": "clamp(2rem, 6vw, 6rem)",
-            width: "100%",
-            gap: "0",
-          }}
-        >
-          <span style={{ display: "block", height: "clamp(2rem, 6vw, 6rem)" }}>
-            {"I AM"}
-          </span>
-
-          <span
-            style={{
-              display: "block",
-              height: "clamp(2rem, 6vw, 6rem)",
-              color: "hsla(39,88%,47%,1)",
-            }}
-          >
-            {"UI/UX DESIGNER"}
-          </span>
-          <span
-            style={{
-              display: "block",
-              height: "clamp(2rem, 6vw, 6rem)",
-              color: "hsla(39,88%,47%,1)",
-            }}
-          >
-            {"FRONT ENGINEER"}
-          </span>
-        </div>
+        {/* First Section */}
+        <FirstSection id="FirstSection" />
       </div>
-
+      {/*Top bar */}
       <div
         style={{
           width: "100%",
@@ -108,7 +61,6 @@ const App: Component = () => {
           {"2025"}
         </span>
         <span style={{ "font-family": "NimbusSanL-Bol", opacity: "0.5" }}>
-          {" "}
           {" PORTFOLIO"}
         </span>
       </div>
