@@ -119,6 +119,8 @@ const App: Component = () => {
                     "figma",
                     "typescript",
                     "rust",
+                    "websocket",
+                    "tcp",
                   ]}
                 >
                   {(tool) => {
